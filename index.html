@@ -16,6 +16,7 @@
                 <ul class="nav__list">
                     <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
                     <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#experience" class="nav__link">Experience</a></li>
                     <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
                     <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
                     <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
@@ -41,11 +42,12 @@
                     </p>
                     <div class="hero__buttons">
                         <a href="#projects" class="btn btn--primary">View My Work</a>
-                        <a href="#" class="btn btn--outline" target="_blank">Download CV</a>
+                        <a href="Resume_Om.pdf" class="btn btn--outline" target="_blank">Download CV</a>
                     </div>
                 </div>
                 <div class="hero__image">
-                    <div class="hero__avatar">OS</div>
+                    <!-- Replace the div with an img tag for your profile picture -->
+                    <img src="profile.jpg" alt="Om Shirude" class="hero__avatar">
                 </div>
             </div>
         </section>
@@ -57,18 +59,61 @@
                 <div class="about__content">
                     <div class="about__text">
                         <p>
-                            I specialize in developing machine learning models, architecting scalable AI applications, and deriving insights from large datasets. I thrive on solving challenging problems and am always eager to learn and apply new technologies to create impactful solutions.
+                            I specialize in developing machine learning models, architecting scalable AI applications, and deriving insights from large datasets. I thrive on solving challenging problems and am always eager to learn and apply new technologies to create impactful solutions. When I'm not coding, I enjoy a good game of chess.
                         </p>
                     </div>
                     <div class="about__info">
                         <div class="about__card">
                             <h3>Core Interests</h3>
                             <ul>
+                                <li>- Creating Agents</li>
                                 <li>- Natural Language Processing</li>
-                                <li>- Computer Vision</li>
                                 <li>- Deep Learning Frameworks</li>
                                 <li>- MLOps & Deployment</li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience section" id="experience">
+            <div class="container">
+                <h2 class="section__title">Work Experience</h2>
+                <div class="experience__timeline">
+                    <!-- Experience Item 1 -->
+                    <div class="experience__item">
+                        <div class="experience__header">
+                            <h3 class="experience__role">AI Engineer Intern</h3>
+                            <h4 class="experience__company">D10x</h4>
+                            <span class="experience__date">July 2024 – July 2025</span>
+                        </div>
+                        <p class="experience__description">
+                            Built a multi-agent framework for a healthcare website using LangGraph and knowledge graphs. Developed data pipelines and engineered a hospital ranking system using Python and PostgreSQL.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tag">LangGraph</span>
+                            <span class="tag">Neo4J</span>
+                            <span class="tag">OpenAI API</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                    <!-- Experience Item 2 -->
+                    <div class="experience__item">
+                        <div class="experience__header">
+                            <h3 class="experience__role">Data Analyst Intern</h3>
+                            <h4 class="experience__company">KASNET TECHNOLOGIES PVT. LTD.</h4>
+                            <span class="experience__date">Nov 2023 – Dec 2023</span>
+                        </div>
+                        <p class="experience__description">
+                            Completed intensive training on Microsoft Azure fundamentals (AI-900, DP-900). Applied skills using Azure Cloud Services and Power BI to contribute to company projects.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tag">Azure</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Data Analysis</span>
                         </div>
                     </div>
                 </div>
@@ -83,40 +128,56 @@
                     <!-- Project Card 1 -->
                     <div class="project__card card">
                         <div class="card__body">
-                            <h3>Project Title 1</h3>
-                            <p>A concise and compelling description of your project. Explain the problem it solves and highlight your specific contributions and the technologies used.</p>
+                            <h3>AutoViz: Automate SQL & Visualizations</h3>
+                            <p>Developed an end-to-end AI pipeline to translate natural language user queries into data visualizations automatically using a multi-agent framework and Apache Superset.</p>
                         </div>
                         <div class="card__footer">
                             <div class="tech-tags">
                                 <span class="tag">Python</span>
-                                <span class="tag">TensorFlow</span>
-                                <span class="tag">Flask</span>
+                                <span class="tag">SQLAlchemy</span>
+                                <span class="tag">Ollama</span>
+                                <span class="tag">Superset</span>
                             </div>
                             <div class="project__links">
-                                <a href="#" target="_blank" class="btn btn--sm btn--outline">GitHub</a>
-                                <a href="#" target="_blank" class="btn btn--sm btn--primary">Live Demo</a>
+                                <a href="https://github.com/OmShirude/AutoViz" target="_blank" class="btn btn--sm btn--outline">GitHub</a>
                             </div>
                         </div>
                     </div>
                      <!-- Project Card 2 -->
                     <div class="project__card card">
                         <div class="card__body">
-                            <h3>Project Title 2</h3>
-                            <p>Another project description. Focus on the impact and the technical challenges you overcame. Keep it brief but informative.</p>
+                            <h3>SmartSlot: AI-Driven Delivery Scheduling</h3>
+                            <p>Designed an AI system to optimize delivery schedules for India Post, with an interactive scheduling interface via WhatsApp/SMS built with Next.js and Twilio.</p>
                         </div>
                         <div class="card__footer">
                             <div class="tech-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">PyTorch</span>
-                                <span class="tag">Streamlit</span>
+                                <span class="tag">Next.js</span>
+                                <span class="tag">Tailwind CSS</span>
+                                <span class="tag">Vercel</span>
+                                <span class="tag">Twilio</span>
                             </div>
                             <div class="project__links">
-                                <a href="#" target="_blank" class="btn btn--sm btn--outline">GitHub</a>
-                                <a href="#" target="_blank" class="btn btn--sm btn--primary">Live Demo</a>
+                                <a href="https://smartslot.vercel.app" target="_blank" class="btn btn--sm btn--outline">View Project</a>
                             </div>
                         </div>
                     </div>
-                    <!-- Add more project cards here -->
+                    <!-- Project Card 3 -->
+                    <div class="project__card card">
+                        <div class="card__body">
+                            <h3>Flight Price Prediction Analysis</h3>
+                            <p>Developed and evaluated multiple regression models (Linear, Decision Tree, Extra Trees) to predict airfare dynamics and identify cost-effective travel solutions.</p>
+                        </div>
+                        <div class="card__footer">
+                            <div class="tech-tags">
+                                <span class="tag">Pandas</span>
+                                <span class="tag">Matplotlib</span>
+                                <span class="tag">Scikit-learn</span>
+                            </div>
+                            <div class="project__links">
+                                <a href="https://github.com/OmShirude/Projects/blob/main/Predicting_flight_prices.py" target="_blank" class="btn btn--sm btn--outline">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -130,23 +191,24 @@
                         <h3>Languages & Frameworks</h3>
                         <div class="skill-tags">
                             <span class="skill-tag">Python</span>
-                            <span class="skill-tag">JavaScript</span>
                             <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">LangChain</span>
+                            <span class="skill-tag">LangGraph</span>
                             <span class="skill-tag">TensorFlow</span>
                             <span class="skill-tag">PyTorch</span>
                             <span class="skill-tag">Scikit-learn</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Node.js</span>
                         </div>
                     </div>
                     <div class="skills__category">
                         <h3>Tools & Platforms</h3>
                          <div class="skill-tags">
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">Kubernetes</span>
-                            <span class="skill-tag">AWS</span>
-                            <span class="skill-tag">GCP</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">SQLAlchemy</span>
+                            <span class="skill-tag">OpenAI API</span>
+                            <span class="skill-tag">HuggingFace</span>
+                            <span class="skill-tag">Ollama</span>
                             <span class="skill-tag">Git & GitHub</span>
+                            <span class="skill-tag">Power BI</span>
                         </div>
                     </div>
                 </div>

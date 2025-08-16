@@ -1,11 +1,12 @@
 /* Show Menu */
 const navMenu = document.getElementById('nav-menu'),
-      navToggle = document.getElementById('nav-toggle'),
-      navClose = document.getElementById('nav-close'); // Assuming you might add a close button inside the menu
+      navToggle = document.getElementById('nav-toggle');
 
 if (navToggle) {
     navToggle.addEventListener('click', () => {
         navMenu.classList.toggle('show-menu');
+        // Simple toggle for burger icon animation
+        navToggle.classList.toggle('active'); 
     });
 }
 
@@ -16,6 +17,9 @@ function linkAction() {
     const navMenu = document.getElementById('nav-menu');
     // When we click on each nav__link, we remove the show-menu class
     navMenu.classList.remove('show-menu');
+    if (navToggle) {
+        navToggle.classList.remove('active');
+    }
 }
 navLinks.forEach(n => n.addEventListener('click', linkAction));
 
@@ -27,13 +31,16 @@ function scrollActive() {
 
     sections.forEach(current => {
         const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 50;
+        const sectionTop = current.offsetTop - 58; // Adjusted for header height
         let sectionId = current.getAttribute('id');
 
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link');
-        } else {
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link');
+        const link = document.querySelector('.nav__menu a[href*=' + sectionId + ']');
+        if(link){
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                link.classList.add('active-link');
+            } else {
+                link.classList.remove('active-link');
+            }
         }
     });
 }
