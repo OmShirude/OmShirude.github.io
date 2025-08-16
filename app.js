@@ -46,46 +46,80 @@ function scrollActive() {
 }
 window.addEventListener('scroll', scrollActive);
 
-/* Typing Animation */
+/* Typing Animation & Copy to Clipboard */
 document.addEventListener('DOMContentLoaded', function() {
+    // Typing Animation
     const typingElement = document.querySelector('.typing-text');
-    if (!typingElement) return;
+    if (typingElement) {
+        const roles = ['AI Engineer', 'Data Scientist', 'MLOps Enthusiast'];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
 
-    const roles = ['AI Engineer', 'Data Scientist', 'MLOps Enthusiast'];
-    let roleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
+        function type() {
+            const currentRole = roles[roleIndex];
+            let displayText = '';
 
-    function type() {
-        const currentRole = roles[roleIndex];
-        let displayText = '';
+            if (isDeleting) {
+                displayText = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                displayText = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
 
-        if (isDeleting) {
-            displayText = currentRole.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            displayText = currentRole.substring(0, charIndex + 1);
-            charIndex++;
+            typingElement.textContent = displayText;
+
+            let typeSpeed = 150;
+            if (isDeleting) {
+                typeSpeed /= 2;
+            }
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                typeSpeed = 2000; // Pause at the end
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 500; // Pause before typing new role
+            }
+
+            setTimeout(type, typeSpeed);
         }
-
-        typingElement.textContent = displayText;
-
-        let typeSpeed = 150;
-        if (isDeleting) {
-            typeSpeed /= 2;
-        }
-
-        if (!isDeleting && charIndex === currentRole.length) {
-            typeSpeed = 2000; // Pause at the end
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            roleIndex = (roleIndex + 1) % roles.length;
-            typeSpeed = 500; // Pause before typing new role
-        }
-
-        setTimeout(type, typeSpeed);
+        type();
     }
 
-    type();
+    // Copy to Clipboard
+    const copyBtn = document.getElementById('copy-phone-btn');
+    const phoneNum = document.getElementById('phone-number');
+
+    if (copyBtn && phoneNum) {
+        copyBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent any default behavior
+            const textToCopy = phoneNum.innerText;
+
+            // Use the document.execCommand for better iFrame compatibility
+            const textArea = document.createElement('textarea');
+            textArea.value = textToCopy;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                
+                // Visual feedback
+                const originalContent = copyBtn.innerHTML;
+                copyBtn.innerHTML = 'Copied!';
+                copyBtn.style.color = 'var(--primary-color)';
+
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalContent;
+                    copyBtn.style.color = 'var(--text-color-light)';
+                }, 2000);
+
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            }
+            document.body.removeChild(textArea);
+        });
+    }
 });
