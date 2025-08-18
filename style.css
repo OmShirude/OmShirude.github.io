@@ -300,7 +300,7 @@ img {
 .workflow-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; /* Align to the top */
     position: relative;
 }
 .workflow-container::before {
@@ -332,18 +332,19 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--bg-color-light);
+    background-color: white;
     border: 2px solid var(--text-color-light);
     border-radius: 50%;
     transition: all 0.3s ease;
+    padding: 15px;
 }
 .workflow-node.active .node-icon {
     border-color: var(--primary-color);
     box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
 }
 .node-icon img {
-    max-width: 60%;
-    max-height: 60%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
 }
 .user-icon { 
