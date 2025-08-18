@@ -669,7 +669,7 @@ img {
     margin: 0;
   }
   .header {
-    position: static;
+    display: none;
   }
   .nav {
     height: var(--header-height);
@@ -685,7 +685,7 @@ img {
     transition: .3s;
   }
   .show-menu {
-    top: var(--header-height);
+    top: 0;
   }
   .nav__list {
     flex-direction: column;
@@ -694,10 +694,15 @@ img {
   }
   .nav__toggle {
     display: block;
+    position: fixed;
+    top: 1rem;
+    right: 1.5rem;
+    z-index: 101;
   }
   .hero__container {
     grid-template-columns: 1fr;
     text-align: center;
+    padding-top: 2rem;
   }
   .hero__image {
       order: -1;
