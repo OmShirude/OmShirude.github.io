@@ -666,10 +666,10 @@ img {
 
 @media screen and (max-width: 768px) {
   body {
-    margin: 0;
+    margin: var(--header-height) 0 0 0;
   }
   .header {
-    position: static;
+    position: fixed;
   }
   .nav {
     height: var(--header-height);
@@ -681,7 +681,7 @@ img {
     width: 100%;
     background-color: var(--bg-color);
     padding: 2rem 1.5rem 4rem;
-    box-shadow: 0 -1px 4px rgba(0,0,0,0.15);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
     transition: .3s;
   }
   .show-menu {
@@ -709,6 +709,15 @@ img {
   }
   .hero__buttons {
       justify-content: center;
+  }
+  .footer {
+      display: none;
+  }
+  .data-packet {
+      display: none;
+  }
+  .workflow-container::before {
+      display: none;
   }
 }
 
