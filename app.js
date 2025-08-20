@@ -132,26 +132,48 @@ document.addEventListener('DOMContentLoaded', function() {
     if (workflowSection) {
         const packet = document.querySelector('.data-packet');
         const nodes = document.querySelectorAll('.workflow-node');
+        const animationDuration = 8000; // 8 seconds total
+        const highlightDuration = animationDuration / 4; // 2 seconds per node
 
         const observer = new IntersectionObserver((entries) => {
+            let intervalId;
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    packet.style.animation = 'move-packet 8s ease-in-out infinite';
+                    packet.style.animation = `move-packet ${animationDuration / 1000}s ease-in-out infinite`;
                     
-                    // Highlight nodes as the packet reaches them
-                    setTimeout(() => nodes[0].classList.add('active'), 0);
-                    setTimeout(() => nodes[0].classList.remove('active'), 2000);
+                    function runHighlightCycle() {
+                        // Highlight node 1
+                        setTimeout(() => {
+                            nodes.forEach(n => n.classList.remove('active'));
+                            nodes[0].classList.add('active');
+                        }, 0);
+                        // Highlight node 2
+                        setTimeout(() => {
+                             nodes.forEach(n => n.classList.remove('active'));
+                            nodes[1].classList.add('active');
+                        }, highlightDuration);
+                         // Highlight node 3
+                        setTimeout(() => {
+                             nodes.forEach(n => n.classList.remove('active'));
+                            nodes[2].classList.add('active');
+                        }, highlightDuration * 2);
+                         // Highlight node 4
+                        setTimeout(() => {
+                             nodes.forEach(n => n.classList.remove('active'));
+                            nodes[3].classList.add('active');
+                        }, highlightDuration * 3);
+                         // Clear last highlight before loop repeats
+                         setTimeout(() => {
+                                nodes.forEach(n => n.classList.remove('active'));
+                         }, animationDuration - 100); // A moment before it restarts
+                    }
+                    
+                    runHighlightCycle();
+                    intervalId = setInterval(runHighlightCycle, animationDuration);
 
-                    setTimeout(() => nodes[1].classList.add('active'), 2000);
-                    setTimeout(() => nodes[1].classList.remove('active'), 4000);
-
-                    setTimeout(() => nodes[2].classList.add('active'), 4000);
-                    setTimeout(() => nodes[2].classList.remove('active'), 6000);
-
-                    setTimeout(() => nodes[3].classList.add('active'), 6000);
-                    setTimeout(() => nodes[3].classList.remove('active'), 8000);
                 } else {
                     packet.style.animation = 'none';
+                    clearInterval(intervalId);
                 }
             });
         }, { threshold: 0.5 });
